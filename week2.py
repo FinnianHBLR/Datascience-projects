@@ -12,9 +12,11 @@ def start():
             # Set all towns to uppercase.
             dfPostCodes['town'] = dfPostCodes['town'].str.upper()
 
-            # Everything positive on latitude is east of Greenwich
+            # Find all addresses that are + or - 0.
             moreThan0 = dfPostCodes.loc[(dfPostCodes.longitude > 0),].copy()
             lessThan0 = dfPostCodes.loc[(dfPostCodes.longitude < 0),].copy()
+            # Locate the town Greenwich
+            greenWich = dfPostCodes.loc[(dfPostCodes.town == "GREENWICH"),].copy()
 
             # Joins the filtered towns to the transaction data.
             moreThan0Joined = moreThan0.set_index("town").join(dfPricePaid.set_index("Town/City"), how='inner')
@@ -29,6 +31,7 @@ def start():
             plt.figure()
             plt.scatter(moreThan0Joined["longitude"], moreThan0Joined["latitude"], c="r")
             plt.scatter(lessThan0Joined["longitude"], lessThan0Joined["latitude"], c="g")
+            plt.scatter(greenWich["longitude"], greenWich["latitude"], c="k", s=200)
             plt.show()
 
             # Save data to dataset
