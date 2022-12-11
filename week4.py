@@ -40,7 +40,7 @@ def myCode():
     plt.plot(x_plot, y_predicted, color='red')
     plt.show()
 
-
+"""
 def hisCode():
     import pandas as pd
     import numpy as np
@@ -61,7 +61,7 @@ def hisCode():
     print(f'The MAE is {err}')
     house280 = model(280)
     print(f'The prediction for a house of size 280 is {house280}')
-
+"""
 
 
 if __name__ == "__main__":

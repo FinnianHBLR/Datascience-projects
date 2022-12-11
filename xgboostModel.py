@@ -18,7 +18,7 @@ def runCode():
 
     model = XGBRegressor()
     model.fit(Xtrain,Ytrain)
-    # NTOE TEST ON TESTING DATA THEN SCATTER THAT
+    # NOTE TEST ON TESTING DATA THEN SCATTER THAT
     pred = model.predict(Xtest)
 
     plt.scatter(Ytest,pred)
